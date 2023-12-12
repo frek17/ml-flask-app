@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Email Spam Classifier
+    </title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        button {
+            color: aliceblue;
+            background-color: #0459e0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Message Phishing Classifier</h1>
+    <div>
+        <form method="post" action="/predict">
+            <textarea rows="12" cols="60" name="content" placeholder="Enter your message here"
+                autocomplete="off">{{ email }}</textarea>
+            <div>
+                <button type="submit">
+                    Submit
+                </button>
+                <a href="/">Reset</a>
+            </div>
+        </form>
+
+    </div>
+    <div>
+        {% if message %}
+        {% if prediction == 0 %}
+        <h2 style="color: #e02504">Phishing!</h2>
+        {% else %}
+        <h2 style="color: #3b9109">Not Phishing</h2>
+        {% endif %}
+        {% endif %}
+    </div>
+</body>
+
+</html>
